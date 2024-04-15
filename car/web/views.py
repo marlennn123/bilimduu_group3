@@ -11,5 +11,5 @@ class CarView(ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['price', 'marka', 'model']
+    filterset_fields = ['price', 'marka', 'title']
     search_fields = ['title']
