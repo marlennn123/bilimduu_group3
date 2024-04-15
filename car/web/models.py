@@ -16,7 +16,7 @@ class Marka(models.Model):
 
 
 class Car(models.Model):
-    title = models.CharField(max_length=32)
+    title = models.CharField(max_length=32, verbose_name="модель")
     marka = models.ForeignKey(Marka, related_name='marka', on_delete=models.CASCADE, null=True)
     category_id = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE, null=True)
     price = models.IntegerField(default=0)

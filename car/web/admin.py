@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Car)
 admin.site.register(Marka)
 admin.site.register(CarBet)
+admin.site.register(Category)
