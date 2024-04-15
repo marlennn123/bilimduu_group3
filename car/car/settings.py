@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'web',
     'django_filters',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
