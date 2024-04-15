@@ -13,3 +13,8 @@ class CarView(ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['price', 'marka', 'title']
     search_fields = ['title']
+
+
+class CarBetView(ModelViewSet):
+    queryset = CarBet.objects.all()
+    serializer_class = CarBetSerializer
