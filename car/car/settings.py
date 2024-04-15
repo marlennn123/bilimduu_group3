@@ -37,15 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    # cors
-    'corsheaders',
-    # allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    # custom apps
     'web',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -56,10 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # cors
-    'corsheaders.middleware.CorsMiddleware',
-    # allauth
-    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'car.urls'
@@ -82,49 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'car.wsgi.application'
 
-
-# Rest Framework settings
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ],
-}
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
-
-# email settings
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# allauth settings
-SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        'SCOPE': [
-            'user',
-            'repo',
-            'read:org',
-        ],
-    },
-    'google': {
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
-    }
-}
-
-# cors settings
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
-
-SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -177,3 +123,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

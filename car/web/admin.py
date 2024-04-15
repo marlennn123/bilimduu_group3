@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+admin.site.register(Model)
+admin.site.register(Marka)
+admin.site.register(Product)
+admin.site.register(CarBet)
