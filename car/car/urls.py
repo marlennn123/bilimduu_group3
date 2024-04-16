@@ -18,6 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from auth_options.views import UserRedirectView
+from django.conf.urls.i18n import i18n_patterns
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,4 +27,8 @@ urlpatterns = [
     path("accounts/", include("auth_options.urls")),
     path("~redirect/", view=UserRedirectView.as_view(), name="redirect"),
     path("", include("web.urls")),
+]
+
+urlpatterns = [
+    *i18n_patterns(*urlpatterns, prefix_default_language=False),
 ]
